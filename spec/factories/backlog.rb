@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :backlog do
     sequence(:name) { |n| "Backlog#{n}" }
     type { 'Type1' }
-    content {  }
+    content {}
     due_at { Date.today + 10 }
   end
 end
