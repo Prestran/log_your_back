@@ -56,4 +56,10 @@ RSpec.configure do |config|
 
   config.include Mongoid::Matchers, type: :model
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:each) do
+    ::Mongoid::Clients.default.collections.each do |collection|
+      collection.delete_many
+    end
+  end
 end
