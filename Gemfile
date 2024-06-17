@@ -32,7 +32,6 @@ gem 'bootsnap', require: false
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'cucumber'
-gem 'graphql'
 gem 'mongoid'
 
 group :development, :test do
