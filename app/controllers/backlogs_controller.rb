@@ -16,17 +16,17 @@ class BacklogsController < ApplicationController
     end
   end
 
-  def destroy
-    if @backlog.destroy
-      render json: :ok
+  def update
+    if @backlog.update(backlog_params)
+      render json: @backlog
     else
       render json: @backlog.errors
     end
   end
 
-  def update
-    if @backlog.update(backlog_params)
-      render json: @backlog
+  def destroy
+    if @backlog.destroy
+      render json: :ok
     else
       render json: @backlog.errors
     end
