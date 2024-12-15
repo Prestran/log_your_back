@@ -1,0 +1,18 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
+
+AllCops:
+  DisabledByDefault: false
+  NewCops: enable
+  TargetRubyVersion: 3.2.1
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - vendor/**/*
+    - bin/*
+
+Documentation:
+  Enabled: false

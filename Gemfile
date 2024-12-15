@@ -33,14 +33,16 @@ gem 'bootsnap', require: false
 
 gem 'carrierwave'
 gem 'cucumber'
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.1'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
-end
-
-group :development do
+  gem 'rubocop-factory_bot', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+  gem 'simplecov', require: false
 end
