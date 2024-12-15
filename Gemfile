@@ -32,14 +32,12 @@ gem 'bootsnap', require: false
 # gem "rack-cors"
 
 gem 'carrierwave'
-gem 'carrierwave-mongoid'
 gem 'cucumber'
-gem 'mongoid'
+gem "pg", "~> 1.1"
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'mongoid-rspec'
   gem 'rspec-rails'
   gem 'rubocop', require: false
 end
