@@ -35,7 +35,7 @@ class BacklogsController < ApplicationController
   private
 
   def backlog_params
-    params.permit(:id, :name, :type, :due_at, backlog_entries: [])
+    params.permit(:id, :name, :type, :due_at)
   end
 
   def find_backlog
