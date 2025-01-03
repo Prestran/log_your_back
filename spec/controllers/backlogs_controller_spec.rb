@@ -23,11 +23,7 @@ RSpec.describe BacklogsController do
     let(:params) do
       {
         name: 'Example backlog',
-        type: 'books',
-        content: [
-          { title: 'Title', score: 7, status: 'completed' },
-          { title: 'Title', status: 'to do' }
-        ],
+        backlog_type: 'books',
         due_at: 1.month.from_now
       }
     end
@@ -53,20 +49,28 @@ RSpec.describe BacklogsController do
 
   describe 'PUT update' do
     let(:backlog) { create(:backlog) }
+    let(:due_at) { 2.weeks.from_now }
     let(:params) do
       { id: backlog.id,
         name: 'Updated backlog',
-        type: 'books',
-        content: [{ title: 'Title', score: 7, status: 'completed' },
-                  { title: 'Title',
-                    status: 'to do' }],
-        due_at: 2.weeks.from_now }
+        backlog_type: 'books',
+        due_at: due_at}
     end
 
     context 'with successful response' do
-      it 'updates the backlog' do
+      it 'updates the backlog type' do
         put(:update, params:)
-        expect(response.parsed_body['type']).to eq 'books'
+        expect(response.parsed_body['backlog_type']).to eq 'books'
+      end
+
+      it 'updates the backlog name' do
+        put(:update, params:)
+        expect(response.parsed_body['name']).to eq 'Updated backlog'
+      end
+
+      it 'updates the backlog due time' do
+        put(:update, params:)
+        expect(response.parsed_body['due_at']).to eq due_at
       end
     end
   end

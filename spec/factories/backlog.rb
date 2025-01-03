@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :backlog do
     sequence(:name) { |n| "Backlog#{n}" }
-    type { 'Type1' }
+    backlog_type { 'Type1' }
     due_at { Time.zone.today + 10 }
   end
 end
