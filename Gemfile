@@ -33,7 +33,10 @@ gem 'bootsnap', require: false
 
 gem 'carrierwave'
 gem 'cucumber'
+gem 'importmap-rails'
 gem 'pg', '~> 1.1'
+gem 'stimulus-rails'
+gem 'turbo-rails', '~> 1.0'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
