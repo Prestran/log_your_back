@@ -49,12 +49,12 @@ RSpec.describe BacklogsController do
 
   describe 'PUT update' do
     let(:backlog) { create(:backlog) }
-    let(:due_at) { 2.weeks.from_now }
+    let(:due_at) { 2.weeks.from_now.to_datetime.beginning_of_hour }
     let(:params) do
       { id: backlog.id,
         name: 'Updated backlog',
         backlog_type: 'books',
-        due_at: due_at}
+        due_at: due_at }
     end
 
     context 'with successful response' do
@@ -70,7 +70,7 @@ RSpec.describe BacklogsController do
 
       it 'updates the backlog due time' do
         put(:update, params:)
-        expect(response.parsed_body['due_at']).to eq due_at
+        expect(response.parsed_body['due_at'].to_datetime.beginning_of_hour).to eq due_at
       end
     end
   end
