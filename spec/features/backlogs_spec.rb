@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Backlogs' do
@@ -24,12 +26,12 @@ RSpec.feature 'Backlogs' do
     visit backlogs_path
     click_on 'Add backlog'
 
-    fill_in "Name", with: "TestName"
-    click_on "Save"
+    fill_in 'Name', with: 'TestName'
+    click_on 'Save'
 
     wait_for_ajax
 
-    expect(page).to have_content "TestName"
+    expect(page).to have_content 'TestName'
   end
 
   scenario 'User edits backlog' do
@@ -39,13 +41,13 @@ RSpec.feature 'Backlogs' do
       visit backlog_path(backlog)
     end
 
-    click_on "Edit"
-    fill_in "Name", with: "TestName"
-    click_on "Save"
+    click_on 'Edit'
+    fill_in 'Name', with: 'TestName'
+    click_on 'Save'
 
     wait_for_ajax
 
-    expect(page).to have_content "TestName"
+    expect(page).to have_content 'TestName'
   end
   # rubocop:enable RSpec/ExampleLength
 end

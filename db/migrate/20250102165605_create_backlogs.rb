@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBacklogs < ActiveRecord::Migration[7.1]
   def change
     create_table :backlogs do |t|
