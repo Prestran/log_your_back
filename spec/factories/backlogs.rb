@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :backlog do
     sequence(:name) { |n| "Backlog#{n}" }
