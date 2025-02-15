@@ -1,0 +1,10 @@
+<main class="container">
+  <div class="header">
+    <h1>Quotes</h1>
+    <%= link_to "New backlog",
+                new_backlog_path,
+                class: "btn btn--primary" %>
+  </div>
+
+  <%= render @backlogs %>
+</main>

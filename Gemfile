@@ -32,13 +32,14 @@ gem 'bootsnap', require: false
 # gem "rack-cors"
 
 gem 'carrierwave'
-gem 'cucumber'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
+gem "simple_form"
 gem 'stimulus-rails'
 gem 'turbo-rails', '~> 1.0'
 
 group :development, :test do
+  gem 'capybara', require: false
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'

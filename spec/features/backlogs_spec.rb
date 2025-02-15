@@ -4,18 +4,13 @@ require 'rails_helper'
 
 RSpec.feature 'Backlogs' do
   scenario 'User visits backlogs page' do
-    before do
-      let(:backlogs) { create_list(:backlog, 5) }
-    end
-
+    create_list(:backlog, 5)
     visit backlogs_path
     expect(page).to have_content 'Backlogs'
   end
 
   scenario 'User visits backlog page' do
-    before do
-      let(:backlog) { create(:backlog) }
-    end
+    backlog = create(:backlog)
 
     visit backlog_path(backlog)
     expect(page).to have_content(backlog.name)
@@ -35,12 +30,8 @@ RSpec.feature 'Backlogs' do
   end
 
   scenario 'User edits backlog' do
-    before do
-      let(:backlog) { create(:backlog) }
-
-      visit backlog_path(backlog)
-    end
-
+    backlog = create(:backlog)
+    visit backlog_path(backlog)
     click_on 'Edit'
     fill_in 'Name', with: 'TestName'
     click_on 'Save'

@@ -4,29 +4,29 @@ class BacklogsController < ApplicationController
   before_action :find_backlog, only: %i[update destroy]
 
   def index
-    render json: Backlog.all
+    @backlogs = Backlog.all
   end
 
   def create
     backlog = Backlog.create!(backlog_params)
     if backlog
-      render json: backlog
+      redirect_to backlog_path(backlog), notice: I18n.t('backlog.notice.created')
     else
-      render json: backlog.errors
+      render :create
     end
   end
 
   def update
     if @backlog.update(backlog_params)
-      render json: @backlog
+      redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.updated')
     else
-      render json: @backlog.errors
+      render :update
     end
   end
 
   def destroy
     if @backlog.destroy
-      render json: :ok
+      redirect_to backlogs_path, notice: I18n.t('backlog.notice.deleted')
     else
       render json: @backlog.errors
     end

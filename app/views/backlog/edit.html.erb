@@ -1,0 +1,10 @@
+
+<main class="container">
+  <%= link_to sanitize("&larr; Back to backlog"), backlog_path(@backlog) %>
+
+  <div class="header">
+    <h1>Edit backlog</h1>
+  </div>
+
+  <%= render "form", quote: @backlog %>
+</main>

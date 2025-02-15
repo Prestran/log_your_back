@@ -28,4 +28,8 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  backlog:
+    notice:
+      updated: Backlog was successfully updated.
+      created: Backlog was successfully created.
+      deleted: Backlog was successfully deleted.

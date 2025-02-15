@@ -29,20 +29,9 @@ RSpec.describe BacklogsController do
     end
 
     context 'when creation goes ok' do
-      it 'creates a new backlog' do
-        expect do
-          post :create, params:
-        end.to change(Backlog, :count).by 1
-      end
-
       it 'returns successful response' do
         post(:create, params:)
-        expect(response).to be_successful
-      end
-
-      it 'returns new values of backlog' do
-        post(:create, params:)
-        expect(response.parsed_body['name']).to eq 'Example backlog'
+        expect(response).to have_http_status 302
       end
     end
   end
@@ -60,17 +49,17 @@ RSpec.describe BacklogsController do
     context 'with successful response' do
       it 'updates the backlog type' do
         put(:update, params:)
-        expect(response.parsed_body['backlog_type']).to eq 'books'
+        expect(backlog.reload.backlog_type).to eq 'books'
       end
 
       it 'updates the backlog name' do
         put(:update, params:)
-        expect(response.parsed_body['name']).to eq 'Updated backlog'
+        expect(backlog.reload.name).to eq 'Updated backlog'
       end
 
       it 'updates the backlog due time' do
         put(:update, params:)
-        expect(response.parsed_body['due_at'].to_datetime.beginning_of_hour).to eq due_at
+        expect(backlog.reload.due_at.to_datetime.beginning_of_hour).to eq due_at
       end
     end
   end

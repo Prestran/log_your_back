@@ -81,6 +81,15 @@ GEM
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
+    capybara (3.40.0)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.11)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
     carrierwave (3.1.0)
       activemodel (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -91,31 +100,6 @@ GEM
     concurrent-ruby (1.3.4)
     connection_pool (2.5.0)
     crass (1.0.6)
-    cucumber (9.2.0)
-      builder (~> 3.2)
-      cucumber-ci-environment (> 9, < 11)
-      cucumber-core (> 13, < 14)
-      cucumber-cucumber-expressions (~> 17.0)
-      cucumber-gherkin (> 24, < 28)
-      cucumber-html-formatter (> 20.3, < 22)
-      cucumber-messages (> 19, < 25)
-      diff-lcs (~> 1.5)
-      mini_mime (~> 1.1)
-      multi_test (~> 1.1)
-      sys-uname (~> 1.2)
-    cucumber-ci-environment (10.0.1)
-    cucumber-core (13.0.3)
-      cucumber-gherkin (>= 27, < 28)
-      cucumber-messages (>= 20, < 23)
-      cucumber-tag-expressions (> 5, < 7)
-    cucumber-cucumber-expressions (17.1.0)
-      bigdecimal
-    cucumber-gherkin (27.0.0)
-      cucumber-messages (>= 19.1.4, < 23)
-    cucumber-html-formatter (21.7.0)
-      cucumber-messages (> 19, < 27)
-    cucumber-messages (22.0.0)
-    cucumber-tag-expressions (6.1.1)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
@@ -158,12 +142,12 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    matrix (0.4.2)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.7.5)
-    multi_test (1.1.0)
     net-imap (0.5.5)
       date
       net-protocol
@@ -281,6 +265,9 @@ GEM
       ffi (~> 1.12)
       logger
     securerandom (0.4.1)
+    simple_form (5.3.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -291,8 +278,6 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.2)
-    sys-uname (1.3.1)
-      ffi (~> 1.1)
     thor (1.3.2)
     timeout (0.4.3)
     turbo-rails (1.5.0)
@@ -310,6 +295,8 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.7.1)
 
 PLATFORMS
@@ -318,8 +305,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  capybara
   carrierwave
-  cucumber
   debug
   factory_bot_rails
   importmap-rails
@@ -332,6 +319,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
+  simple_form
   simplecov
   stimulus-rails
   turbo-rails (~> 1.0)
@@ -341,4 +329,4 @@ RUBY VERSION
    ruby 3.2.1p31
 
 BUNDLED WITH
-   2.5.17
+   2.6.3
