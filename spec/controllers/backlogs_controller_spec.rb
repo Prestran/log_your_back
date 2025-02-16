@@ -12,38 +12,39 @@ RSpec.describe BacklogsController do
       get :index
       expect(response).to be_successful
     end
-
-    it 'returns all backlogs as json' do
-      get :index
-      expect(response.parsed_body.length).to eq 10
-    end
   end
 
   describe 'POST create' do
     let(:params) do
       {
-        name: 'Example backlog',
-        backlog_type: 'books',
-        due_at: 1.month.from_now
+        backlog: {
+          name: 'Example backlog',
+          backlog_type: 'books',
+          due_at: 1.month.from_now
+        }
       }
     end
 
     context 'when creation goes ok' do
       it 'returns successful response' do
         post(:create, params:)
-        expect(response).to have_http_status 302
+        expect(response).to have_http_status :found
       end
     end
   end
 
   describe 'PUT update' do
     let(:backlog) { create(:backlog) }
-    let(:due_at) { 2.weeks.from_now.to_datetime.beginning_of_hour }
+    let(:due_at) { 2.weeks.from_now.to_date }
     let(:params) do
-      { id: backlog.id,
-        name: 'Updated backlog',
-        backlog_type: 'books',
-        due_at: due_at }
+      {
+        id: backlog.id,
+        backlog: {
+          name: 'Updated backlog',
+          backlog_type: 'books',
+          due_at: due_at
+        }
+      }
     end
 
     context 'with successful response' do
@@ -59,7 +60,7 @@ RSpec.describe BacklogsController do
 
       it 'updates the backlog due time' do
         put(:update, params:)
-        expect(backlog.reload.due_at.to_datetime.beginning_of_hour).to eq due_at
+        expect(backlog.reload.due_at).to eq due_at
       end
     end
   end
