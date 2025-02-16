@@ -1,0 +1,17 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to backlogs"), backlogs_path %>
+  <div class="header">
+    <h1>
+      <%= @backlog.name %>
+    </h1>
+
+    <div class="backlog-show-container">
+      <div class="backlog-show-type">
+        <%= @backlog.backlog_type %>
+      </div>
+      <div class="backlog-show-date">
+        <%= @backlog.due_at %>
+      </div>
+    </div>
+  </div>
+</main>

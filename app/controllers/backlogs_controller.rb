@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class BacklogsController < ApplicationController
-  before_action :find_backlog, only: %i[update destroy]
+  before_action :find_backlog, only: %i[show edit update destroy]
 
   def index
     @backlogs = Backlog.all
   end
+
+  def show; end
 
   def new
     @backlog = Backlog.new
@@ -14,11 +16,11 @@ class BacklogsController < ApplicationController
   def edit; end
 
   def create
-    backlog = Backlog.create!(backlog_params)
-    if backlog
-      redirect_to backlog_path(backlog), notice: I18n.t('backlog.notice.created')
+    @backlog = Backlog.new(backlog_params)
+    if @backlog.save
+      redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.created')
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +28,7 @@ class BacklogsController < ApplicationController
     if @backlog.update(backlog_params)
       redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.updated')
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
