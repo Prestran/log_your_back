@@ -1,4 +1,4 @@
-<%= simple_form_for quote, html: { class: "backlog form" } do |f| %>
+<%= simple_form_for backlog, html: { class: "backlog form" } do |f| %>
   <% if backlog.errors.any? %>
     <div class="error-message">
       <%= backlog.errors.full_messages.to_sentence.capitalize %>
@@ -6,5 +6,7 @@
   <% end %>
 
   <%= f.input :name, input_html: { autofocus: true } %>
+  <%= f.input :backlog_type %>
+  <%= f.input :due_at, as: :date %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

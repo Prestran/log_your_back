@@ -7,12 +7,18 @@ class BacklogsController < ApplicationController
     @backlogs = Backlog.all
   end
 
+  def new
+    @backlog = Backlog.new
+  end
+
+  def edit; end
+
   def create
     backlog = Backlog.create!(backlog_params)
     if backlog
       redirect_to backlog_path(backlog), notice: I18n.t('backlog.notice.created')
     else
-      render :create
+      render :new
     end
   end
 
@@ -20,7 +26,7 @@ class BacklogsController < ApplicationController
     if @backlog.update(backlog_params)
       redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.updated')
     else
-      render :update
+      render :edit
     end
   end
 
@@ -35,7 +41,7 @@ class BacklogsController < ApplicationController
   private
 
   def backlog_params
-    params.permit(:id, :name, :backlog_type, :due_at)
+    params.require(:backlog).permit(:id, :name, :backlog_type, :due_at)
   end
 
   def find_backlog
