@@ -34,6 +34,7 @@ gem 'bootsnap', require: false
 gem 'carrierwave'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
+gem 'sass-rails'
 gem "simple_form"
 gem 'stimulus-rails'
 gem 'turbo-rails', '~> 1.0'
