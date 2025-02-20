@@ -37,7 +37,7 @@ gem 'pg', '~> 1.1'
 gem 'sass-rails'
 gem "simple_form"
 gem 'stimulus-rails'
-gem 'turbo-rails', '~> 1.0'
+gem 'turbo-rails'
 
 group :development, :test do
   gem 'capybara', require: false

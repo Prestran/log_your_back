@@ -341,7 +341,7 @@ DEPENDENCIES
   simple_form
   simplecov
   stimulus-rails
-  turbo-rails (~> 1.0)
+  turbo-rails
   tzinfo-data
 
 RUBY VERSION
