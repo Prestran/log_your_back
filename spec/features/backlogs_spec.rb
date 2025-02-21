@@ -19,26 +19,42 @@ RSpec.feature 'Backlogs' do
   # rubocop:disable RSpec/ExampleLength
   scenario 'User creates new backlog' do
     visit backlogs_path
-    click_on 'Add backlog'
+    assert_selector 'h1', text: 'Backlogs'
 
-    fill_in 'Name', with: 'TestName'
-    click_on 'Save'
+    click_on 'New backlog'
+    fill_in 'Name', with: 'Capybara backlog'
 
-    wait_for_ajax
+    assert_selector 'h1', text: 'backlogs'
+    click_on 'Create backlog'
 
-    expect(page).to have_content 'TestName'
+    assert_selector 'h1', text: 'Backlogs'
+    assert_text 'Capybara backlog'
   end
 
   scenario 'User edits backlog' do
+    create(:backlog)
+
+    visit backlogs_path
+    assert_selector 'h1', text: 'Backlogs'
+
+    click_on 'Edit', match: :first
+    fill_in 'Name', with: 'Updated backlog'
+
+    assert_selector 'h1', text: 'Backlogs'
+    click_on 'Update backlog'
+
+    assert_selector 'h1', text: 'Backlog'
+    assert_text 'Updated backlog'
+  end
+
+  scenario "User destroys a backlog" do
     backlog = create(:backlog)
-    visit backlog_path(backlog)
-    click_on 'Edit'
-    fill_in 'Name', with: 'TestName'
-    click_on 'Save'
 
-    wait_for_ajax
+    visit backlogs_path
+    assert_text backlog.name
 
-    expect(page).to have_content 'TestName'
+    click_on "Delete", match: :first
+    assert_no_text backlog.name
   end
   # rubocop:enable RSpec/ExampleLength
 end
