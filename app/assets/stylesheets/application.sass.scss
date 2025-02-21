@@ -6,11 +6,12 @@
 @import "config/normalize";
 
 // Components
+@import "components/backlog";
 @import "components/btn";
 @import "components/error_message";
 @import "components/form";
+@import "components/turbo_progress_bar";
 @import "components/visually_hidden";
-@import "components/backlog";
 
 // Layouts
 @import "layouts/container";
