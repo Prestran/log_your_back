@@ -115,7 +115,7 @@ a:hover, a:focus, a:active {
   color: var(--color-primary-rotate);
 }
 
-.backlogs {
+.backlog {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -127,11 +127,11 @@ a:hover, a:focus, a:active {
   padding: var(--space-xs);
 }
 @media (min-width: 50rem) {
-  .backlogs {
+  .backlog {
     padding: var(--space-xs) var(--space-m);
   }
 }
-.backlogs__actions {
+.backlog__actions {
   display: flex;
   flex: 0 0 auto;
   align-self: flex-start;

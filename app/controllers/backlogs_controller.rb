@@ -4,7 +4,7 @@ class BacklogsController < ApplicationController
   before_action :find_backlog, only: %i[show edit update destroy]
 
   def index
-    @backlogs = Backlog.all
+    @backlogs = Backlog.ordered
   end
 
   def show; end
@@ -17,26 +17,33 @@ class BacklogsController < ApplicationController
 
   def create
     @backlog = Backlog.new(backlog_params)
-    if @backlog.save
-      redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.created')
-    else
-      render :new, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @backlog.save
+        format.html { redirect_to backlogs_path, notice: I18n.t('backlog.notice.created') }
+        format.turbo_stream
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
   def update
     if @backlog.update(backlog_params)
-      redirect_to backlog_path(@backlog), notice: I18n.t('backlog.notice.updated')
+      redirect_to backlogs_path, notice: I18n.t('backlog.notice.updated')
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @backlog.destroy
-      redirect_to backlogs_path, notice: I18n.t('backlog.notice.deleted')
-    else
-      render json: @backlog.errors
+    respond_to do |format|
+      if @backlog.destroy
+        format.html { redirect_to backlogs_path, notice: I18n.t('backlog.notice.deleted') }
+        format.turbo_stream
+      else
+        format.json @backlog.errors
+      end
     end
   end
 

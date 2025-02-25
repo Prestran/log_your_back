@@ -1,12 +1,16 @@
-<div class="backlogs">
-  <%= link_to backlog.name, backlog_path(backlog) %>
-  <div class="backlogs__actions">
-    <%= button_to "Delete",
-                  backlog_path(backlog),
-                  method: :delete,
+<%= turbo_frame_tag backlog do %>
+  <div class="backlog">
+    <%= link_to backlog.name,
+                backlog_path(backlog),
+                data: { turbo_frame: "_top" } %>
+    <div class="backlog__actions">
+      <%= button_to "Delete",
+                    backlog_path(backlog),
+                    method: :delete,
+                    class: "btn btn--light" %>
+      <%= link_to "Edit",
+                  edit_backlog_path(backlog),
                   class: "btn btn--light" %>
-    <%= link_to "Edit",
-                edit_backlog_path(backlog),
-                class: "btn btn--light" %>
+    </div>
   </div>
-</div>
+<% end %>

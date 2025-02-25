@@ -5,5 +5,7 @@
     <h1>Edit backlog</h1>
   </div>
 
-  <%= render "form", backlog: @backlog %>
+  <%= turbo_frame_tag @backlog do %>
+    <%= render "form", backlog: @backlog %>
+  <% end %>
 </main>

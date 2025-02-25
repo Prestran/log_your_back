@@ -8,5 +8,6 @@
   <%= f.input :name, input_html: { autofocus: true } %>
   <%= f.input :backlog_type %>
   <%= f.input :due_at, as: :date %>
+  <%= link_to "Cancel", backlogs_path, class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>
