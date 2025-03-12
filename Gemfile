@@ -32,6 +32,7 @@ gem 'bootsnap', require: false
 # gem "rack-cors"
 
 gem 'carrierwave'
+gem 'devise'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
 gem 'sass-rails'

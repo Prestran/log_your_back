@@ -1,3 +1,6 @@
 class Organisation < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  has_many :users
+  has_many :backlogs
+
+  validates :name, presence: true
 end
