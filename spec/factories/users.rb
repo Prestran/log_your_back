@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :user do
+    email { 'email@default.com' }
+    password { Devise::Encryptor.digest(User, 'password') }
     encrypted_password { Devise::Encryptor.digest(User, 'password') }
 
     trait :organisation_1 do

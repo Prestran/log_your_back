@@ -42,6 +42,7 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'capybara', require: false
+  gem 'database_cleaner', '~> 1.7'
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'

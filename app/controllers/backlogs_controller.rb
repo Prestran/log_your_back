@@ -4,7 +4,7 @@ class BacklogsController < ApplicationController
   before_action :find_backlog, only: %i[show edit update destroy]
 
   def index
-    @backlogs = Backlog.ordered
+    @backlogs = current_organisation.backlogs.ordered
   end
 
   def show; end
@@ -16,7 +16,7 @@ class BacklogsController < ApplicationController
   def edit; end
 
   def create
-    @backlog = Backlog.new(backlog_params)
+    @backlog = current_organisation.backlogs.build(backlog_params)
 
     respond_to do |format|
       if @backlog.save
@@ -54,7 +54,7 @@ class BacklogsController < ApplicationController
   end
 
   def find_backlog
-    @backlog = Backlog.find(params[:id])
+    @backlog = current_organisation.backlogs.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: 'not_found', status: :not_found
   end
