@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend "backlogs", @backlog %>
 <%= turbo_stream.update Backlog.new, "" %>
+<%= render_flash_message_to_turbo_stream %>

@@ -21,7 +21,7 @@ class BacklogsController < ApplicationController
     respond_to do |format|
       if @backlog.save
         format.html { redirect_to backlogs_path, notice: I18n.t('backlog.notice.created') }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = I18n.t('backlog.notice.created') }
       else
         render :new, status: :unprocessable_entity
       end
@@ -29,10 +29,13 @@ class BacklogsController < ApplicationController
   end
 
   def update
-    if @backlog.update(backlog_params)
-      redirect_to backlogs_path, notice: I18n.t('backlog.notice.updated')
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @backlog.update(backlog_params)
+        format.html { redirect_to backlogs_path, notice: I18n.t('backlog.notice.updated') }
+        format.turbo_stream { flash.now[:notice] = I18n.t('backlog.notice.updated') }
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -40,7 +43,7 @@ class BacklogsController < ApplicationController
     respond_to do |format|
       if @backlog.destroy
         format.html { redirect_to backlogs_path, notice: I18n.t('backlog.notice.deleted') }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = I18n.t('backlog.notice.deleted') }
       else
         format.json @backlog.errors
       end
